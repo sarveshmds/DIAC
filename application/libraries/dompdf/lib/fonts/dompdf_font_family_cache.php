@@ -1,0 +1,112 @@
+<?php return array (
+  'sans-serif' => array(
+    'normal' => $fontDir . '/Helvetica',
+    'bold' => $fontDir . '/Helvetica-Bold',
+    'italic' => $fontDir . '/Helvetica-Oblique',
+    'bold_italic' => $fontDir . '/Helvetica-BoldOblique',
+  ),
+  'times' => array(
+    'normal' => $fontDir . '/Times-Roman',
+    'bold' => $fontDir . '/Times-Bold',
+    'italic' => $fontDir . '/Times-Italic',
+    'bold_italic' => $fontDir . '/Times-BoldItalic',
+  ),
+  'times-roman' => array(
+    'normal' => $fontDir . '/Times-Roman',
+    'bold' => $fontDir . '/Times-Bold',
+    'italic' => $fontDir . '/Times-Italic',
+    'bold_italic' => $fontDir . '/Times-BoldItalic',
+  ),
+  'courier' => array(
+    'normal' => $fontDir . '/Courier',
+    'bold' => $fontDir . '/Courier-Bold',
+    'italic' => $fontDir . '/Courier-Oblique',
+    'bold_italic' => $fontDir . '/Courier-BoldOblique',
+  ),
+  'helvetica' => array(
+    'normal' => $fontDir . '/Helvetica',
+    'bold' => $fontDir . '/Helvetica-Bold',
+    'italic' => $fontDir . '/Helvetica-Oblique',
+    'bold_italic' => $fontDir . '/Helvetica-BoldOblique',
+  ),
+  'zapfdingbats' => array(
+    'normal' => $fontDir . '/ZapfDingbats',
+    'bold' => $fontDir . '/ZapfDingbats',
+    'italic' => $fontDir . '/ZapfDingbats',
+    'bold_italic' => $fontDir . '/ZapfDingbats',
+  ),
+  'symbol' => array(
+    'normal' => $fontDir . '/Symbol',
+    'bold' => $fontDir . '/Symbol',
+    'italic' => $fontDir . '/Symbol',
+    'bold_italic' => $fontDir . '/Symbol',
+  ),
+  'serif' => array(
+    'normal' => $fontDir . '/Times-Roman',
+    'bold' => $fontDir . '/Times-Bold',
+    'italic' => $fontDir . '/Times-Italic',
+    'bold_italic' => $fontDir . '/Times-BoldItalic',
+  ),
+  'monospace' => array(
+    'normal' => $fontDir . '/Courier',
+    'bold' => $fontDir . '/Courier-Bold',
+    'italic' => $fontDir . '/Courier-Oblique',
+    'bold_italic' => $fontDir . '/Courier-BoldOblique',
+  ),
+  'fixed' => array(
+    'normal' => $fontDir . '/Courier',
+    'bold' => $fontDir . '/Courier-Bold',
+    'italic' => $fontDir . '/Courier-Oblique',
+    'bold_italic' => $fontDir . '/Courier-BoldOblique',
+  ),
+  'dejavu sans' => array(
+    'bold' => $fontDir . '/DejaVuSans-Bold',
+    'bold_italic' => $fontDir . '/DejaVuSans-BoldOblique',
+    'italic' => $fontDir . '/DejaVuSans-Oblique',
+    'normal' => $fontDir . '/DejaVuSans',
+  ),
+  'dejavu sans mono' => array(
+    'bold' => $fontDir . '/DejaVuSansMono-Bold',
+    'bold_italic' => $fontDir . '/DejaVuSansMono-BoldOblique',
+    'italic' => $fontDir . '/DejaVuSansMono-Oblique',
+    'normal' => $fontDir . '/DejaVuSansMono',
+  ),
+  'dejavu serif' => array(
+    'bold' => $fontDir . '/DejaVuSerif-Bold',
+    'bold_italic' => $fontDir . '/DejaVuSerif-BoldItalic',
+    'italic' => $fontDir . '/DejaVuSerif-Italic',
+    'normal' => $fontDir . '/DejaVuSerif',
+  ),
+  'glyphicons halflings' => array(
+    'normal' => $fontDir . '/glyphicons-halflings-normal_03659713e02fdc4a817ded67230114da',
+  ),
+  'fontawesome' => array(
+    'normal' => $fontDir . '/fontawesome-normal_6b8e499bcda8377ed857c7974e5333cf',
+  ),
+  'ionicons' => array(
+    'normal' => $fontDir . '/ionicons-normal_fb7e602c1ccb83e0a9c7895b76b45063',
+  ),
+  'source sans pro' => array(
+    '300_italic' => $fontDir . '/source-sans-pro-300-italic_8c083019ac1877268942f8eec90d7c2c',
+    'italic' => $fontDir . '/source-sans-pro-italic_ee7ae5fa11aa2d31d073a974b71aff96',
+    '600_italic' => $fontDir . '/source-sans-pro-600-italic_422c1fcf154692ab0affdd51221370f5',
+    '300' => $fontDir . '/source-sans-pro-300_302e2dc707bd747512a5d4b16bfd7a0f',
+    'normal' => $fontDir . '/source-sans-pro-normal_9bbc93cd4eeb4c96ec714f118af1ef95',
+    '600' => $fontDir . '/source-sans-pro-600_1ec5dd4a4563d5d2bc5b1f0210abb24b',
+    'bold' => $fontDir . '/source-sans-pro-bold_3e55723bb0d4936b0320296623a8c224',
+  ),
+  'noto sans' => array(
+    'normal' => $fontDir . '/noto-sans-normal_b3f5cddfd313100d76ebe4cb06deabfb',
+    '500' => $fontDir . '/noto-sans-500_ccccc44f93909eea9aa2b6984ff77dae',
+    '600' => $fontDir . '/noto-sans-600_2f9100ddb5885ff084cc554ed6fe2602',
+    'bold' => $fontDir . '/noto-sans-bold_595dc4c733528ac8b18fdc3b02b0bd1d',
+    '800' => $fontDir . '/noto-sans-800_424f8918135654188beebd1fe63b4b95',
+  ),
+  'poppins' => array(
+    '300' => $fontDir . '/poppins-300_87f0a8a73c876e947643eb7d19bec0b7',
+    'normal' => $fontDir . '/poppins-normal_a62832bf75823019dc29c5a9c470d64d',
+    '500' => $fontDir . '/poppins-500_a885de0ea35a644243715bf64b6d1a65',
+    '600' => $fontDir . '/poppins-600_ca6698540fb485d7b756c91a54a37d8e',
+    'bold' => $fontDir . '/poppins-bold_87c49bf24d72f01a4af573680817521f',
+  ),
+) ?>
