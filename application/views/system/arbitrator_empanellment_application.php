@@ -2,7 +2,7 @@
     <div class="content">
         <div class="content-heading text-center">
             <h4 class="content-title">
-                Arbitrator Empanellment Application
+                Arbitrator Empanelment  Application
             </h4>
         </div>
 
@@ -193,10 +193,10 @@
                         </td>
                     </tr>
 
-                    <!-- Correspondance Address -->
+                    <!-- Correspondence Address -->
                     <tr>
                         <th colspan="4">
-                            Correspondance Address
+                        Correspondence Address  
                         </th>
                     </tr>
                     <tr>
@@ -277,7 +277,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <label class="form-label">Total Experiance in Arbitration:</label>
+                            <label class="form-label">Total Experience in Arbitration:</label>
                         </td>
                         <td>
                             <p><?= $professional_information['arbitration_experiance'] ?></p>
@@ -487,7 +487,7 @@
 
                     <tr>
                         <td colspan="2">
-                            <label class="form-label">Are you employed as member of any Tribunal/Authority/Quasi-Judicial body in Goverment or in Autonomous body?</label>
+                            <label class="form-label">Are you employed as member of any Tribunal/Authority/Quasi-Judicial body in Government or in Autonomous body?</label>
                         </td>
                     </tr>
                     <tr>
@@ -566,7 +566,7 @@
                     <?php if ($professional_information['is_already_empanelled_arb'] == 'yes') : ?>
                         <tr class="bg-dark text-white">
                             <th>Name of Institute:</th>
-                            <th>Date of Empanellment:</th>
+                            <th>Date of Empanelment:</th>
                         </tr>
                         <?php foreach ($arb_empanel_other as $key => $arb_other) : ?>
                             <tr>

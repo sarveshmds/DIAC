@@ -59,6 +59,8 @@
                                             <th>D.O.B.</th>
                                             <th>Email</th>
                                             <th>Contact</th>
+                                            <th>Case Title Number</th>  
+                                            <th>Case Status</th>   
                                             <th style="width:15%;">Action</th>
                                         </tr>
                                     </thead>
@@ -277,63 +279,78 @@
 
     // Datatable initialization
     // =====================================================
-    // Datatable for empanelled arbitrator
-    var arbitrator_setup_datatable = $('#arbitrator_setup_datatable_appr').DataTable({
-        "processing": true,
-        "serverSide": true,
-        "autoWidth": false,
-        "responsive": true,
-        "ordering": false,
-        "order": [],
-        "ajax": {
-            url: base_url + "arbitrator-setup/get-datatable-data_appr",
-            type: 'POST',
-            data: function(d) {
-                d.csrf_trans_token = $('#arb_form_token').val();
-                d.f_arbitrator_name = $("#f_arbitrator_name").val();
-                d.f_whether_on_panel = 1;
+      // Datatable for empanelled arbitrator
+var arbitrator_setup_datatable = $('#arbitrator_setup_datatable_appr').DataTable({
+    "processing": true,
+    "serverSide": true,
+    "autoWidth": false,
+    "responsive": true,
+    "ordering": false,
+    "order": [],
+    "ajax": {
+        url: base_url + "arbitrator-setup/get-datatable-data_appr",
+        type: 'POST',
+        data: function(d) {
+            d.csrf_trans_token = $('#arb_form_token').val();
+            d.f_arbitrator_name = $("#f_arbitrator_name").val();
+            d.f_whether_on_panel = 1;
+        }
+    },
+    "columns": [
+        {
+            data: null,
+            render: function(data, type, row, meta) {
+                return meta.row + meta.settings._iDisplayStart + 1;
             }
         },
-        "columns": [{
-                data: null,
-                render: function(data, type, row, meta) {
-                    return meta.row + meta.settings._iDisplayStart + 1;
-                }
-            },
-            {
-                data: 'name_of_arbitrator'
-            },
-            {
-                data: 'category'
-            },
-            {
-                data: 'dob'
-            },
-            {
-                data: 'email'
-            },
-            {
-                data: 'contact_no'
-            },
-            {
-                data: null,
-                "sWidth": "10%",
-                "sClass": "alignCenter",
-                "render": function(data, type, row, meta) {
-                    return '<button class="btn btn-warning btn-sm" onclick="btn_edit_appr(event)" data-tooltip="tooltip" title="Edit Details"><span class="fa fa-edit"></span></button> <button class="btn btn-danger btn-sm" onclick="delete_arbitrator_details(' + data.id + ')" data-tooltip="tooltip" title="Delete"><span class="fa fa-trash"></span></button>'
-                }
+        {
+            data: 'name_of_arbitrator'
+        },
+        {
+            data: 'category'
+        },
+        {
+            data: 'dob'  // This will show in the table but be excluded in the export
+        },
+        {
+            data: 'email'  // This will show in the table but be excluded in the export
+        },
+        {
+            data: 'contact_no'  // This will show in the table but be excluded in the export
+        },
+        {
+            data: 'case_no_desc',
+            "sWidth": "20%",  // Increase width for case title
+            render: function(data, type, row, meta) {
+                return data ? data.replace(/,/g, '<br>') : '';  // Replace commas with <br> for new line
             }
-
-        ],
-        "columnDefs": [{
-            "targets": [0, 2],
-            "orderable": false,
-            "sorting": false
-        }],
-        dom: "<'row'<'col-sm-6'l><'col-sm-6 dt-custom-btn-col'B>>" +
-            "<'row'<'col-sm-12'tr>>" +
-            "<'row'<'col-sm-5'i><'col-sm-7'p>>",
-        buttons: [{
+        },
+        {
+            data: 'case_status',
+            "sWidth": "20%",  // Increase width for case status
+            render: function(data, type, row, meta) {
+                return data ? data.replace(/,/g, '<br>') : '';  // Replace commas with <br> for new line
+            }
+        },
+        {
+            data: null,
+            "sWidth": "10%",
+            "sClass": "alignCenter",
+            "render": function(data, type, row, meta) {
+                return '<button class="btn btn-warning btn-sm" onclick="btn_edit_appr(event)" data-tooltip="tooltip" title="Edit Details"><span class="fa fa-edit"></span></button> <button class="btn btn-danger btn-sm" onclick="delete_arbitrator_details(' + data.id + ')" data-tooltip="tooltip" title="Delete"><span class="fa fa-trash"></span></button>';
+            }
+        }
+    ],
+    "columnDefs": [{
+        "targets": [0, 2],
+        "orderable": false,
+        "sorting": false
+    }],
+    dom: "<'row'<'col-sm-6'l><'col-sm-6 dt-custom-btn-col'B>>" +
+         "<'row'<'col-sm-12'tr>>" +
+         "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+    buttons: [
+        {
             text: '<span class="fa fa-plus"></span> Add',
             className: 'btn btn-custom',
             init: function(api, node, config) {
@@ -342,17 +359,30 @@
             action: function(e, dt, node, config) {
                 add_panel_category_list_modal_open();
             }
-        }],
-        lengthMenu: [
-            [20, 50, 100, 1000],
-            [20, 50, 100, 1000]
-        ],
-        drawCallback: function() {
-            $('body').tooltip({
-                selector: '[data-tooltip="tooltip"]'
-            });
+        },
+        {
+            extend: 'excelHtml5',
+            text: ' <span class="fa fa-file-excel-o"></span> Export Pink List',
+            className: 'btn btn-custom',
+            exportOptions: {
+                // Exclude the 4th, 5th, and 6th columns (DOB, Email, Contact No) from export
+                columns: function(idx, data, node) {
+                    return idx !== 3 && idx !== 4 && idx !== 5 && idx !== 8; // Keep all columns except the 4th, 5th, and 6th
+                }
+            }
         }
-    });
+    ],
+    lengthMenu: [
+        [20, 50, 100, 1000],
+        [20, 50, 100, 1000]
+    ],
+    drawCallback: function() {
+        $('body').tooltip({
+            selector: '[data-tooltip="tooltip"]'
+        });
+    }
+});
+
 
     // =====================================================
     // Datatable for not empanelled arbitrator
@@ -420,7 +450,13 @@
             action: function(e, dt, node, config) {
                 add_panel_category_list_modal_open();
             }
-        }],
+        },
+        {
+            extend: 'excelHtml5',
+            text: ' <span class="fa fa-file-excel-o"></span> Export Pink List',
+            className: 'btn btn-custom'
+        }  
+    ],
         lengthMenu: [
             [20, 50, 100, 1000],
             [20, 50, 100, 1000]

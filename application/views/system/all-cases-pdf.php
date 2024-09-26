@@ -13,8 +13,8 @@
 						<th>S. No</th>
 						<th>Case No.</th>
 						<th>Case Title</th>
-						<th>Reffered On</th>
-						<th>Reffered By</th>
+						<th>Referred  On</th>
+						<th>Referred  By</th>
 						<th>Received On</th>
 						<th>Registered On</th>
 						<th>Status</th>

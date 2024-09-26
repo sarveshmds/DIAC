@@ -95,7 +95,7 @@
 
 	<!-- Respondant -->
 	<h4 class="mb-10">
-		<b><u>Respondants</u></b>
+		<b><u>Respondents</u></b>
 	</h4>
 	<div class="mb-10">
 		<table class="table table-bordered common-case-details-table" cellspacing="0">
@@ -308,7 +308,7 @@
 			<tr>
 				<th width="8%">S. No.</th>
 				<th width="12%">Name</th>
-				<th width="10%">Wheather On Panel</th>
+				<th width="10%">Weather On Panel</th>
 				<th width="10%">Category</th>
 				<th width="10%">Appointed By</th>
 				<th width="10%">Date Of Appointment</th>
@@ -425,7 +425,7 @@
 
 			<div class="respondant-share-col">
 
-				<h4 class="mb-10"><b><u>Respondant's Share:</u></b></h4>
+				<h4 class="mb-10"><b><u>Respondent's Share:</u></b></h4>
 				<div class="form-group">
 					<b>Arbitrators Fees (Rs.): </b>
 					<?= (isset($case_data['fee_cost_data']['rs_arb_fees']))? $case_data['fee_cost_data']['rs_arb_fees']:'' ?>
@@ -482,7 +482,7 @@
 				</div>
 
 				<div>
-					<b>Balanace: </b>
+					<b>Balance: </b>
 					<?= 'Rs. '.$case_data['amount_n_balance']['balance'] ?>
 				</div>
 			</div>
