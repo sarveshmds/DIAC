@@ -1,6 +1,6 @@
 # Ignore CodeIgniter configuration files
 /application/config/config.php
 /application/config/database.php
-
+/application/session/
 # Ignore uploaded files directory
 /public/upload

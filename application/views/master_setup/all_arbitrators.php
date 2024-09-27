@@ -60,6 +60,7 @@
                                             <th>Email</th>
                                             <th>Contact</th>
                                             <th>Case Title Number</th>  
+                                            <th>Date Of Appointment</th>     
                                             <th>Case Status</th>   
                                             <th style="width:15%;">Action</th>
                                         </tr>
@@ -279,8 +280,8 @@
 
     // Datatable initialization
     // =====================================================
-      // Datatable for empanelled arbitrator
-var arbitrator_setup_datatable = $('#arbitrator_setup_datatable_appr').DataTable({
+// Datatable for empanelled arbitrator
+    var arbitrator_setup_datatable = $('#arbitrator_setup_datatable_appr').DataTable({
     "processing": true,
     "serverSide": true,
     "autoWidth": false,
@@ -326,6 +327,13 @@ var arbitrator_setup_datatable = $('#arbitrator_setup_datatable_appr').DataTable
             }
         },
         {
+            data: 'date_of_appointment',
+            "sWidth": "20%",  // Increase width for case status
+            render: function(data, type, row, meta) {
+                return data ? data.replace(/,/g, '<br>') : '';  // Replace commas with <br> for new line
+            } 
+        },
+        {
             data: 'case_status',
             "sWidth": "20%",  // Increase width for case status
             render: function(data, type, row, meta) {
@@ -367,8 +375,9 @@ var arbitrator_setup_datatable = $('#arbitrator_setup_datatable_appr').DataTable
             exportOptions: {
                 // Exclude the 4th, 5th, and 6th columns (DOB, Email, Contact No) from export
                 columns: function(idx, data, node) {
-                    return idx !== 3 && idx !== 4 && idx !== 5 && idx !== 8; // Keep all columns except the 4th, 5th, and 6th
+                    return idx !== 3 && idx !== 4 && idx !== 5 && idx !== 9; // Keep all columns except the 4th, 5th, and 6th
                 }
+                
             }
         }
     ],
@@ -381,7 +390,7 @@ var arbitrator_setup_datatable = $('#arbitrator_setup_datatable_appr').DataTable
             selector: '[data-tooltip="tooltip"]'
         });
     }
-});
+}); 
 
 
     // =====================================================

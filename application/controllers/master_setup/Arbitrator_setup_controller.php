@@ -273,22 +273,27 @@ class Arbitrator_setup_controller extends CI_Controller
     
     public function get_datatable_data_appr()
 {
-    // Selecting required fields and aggregating case details group
-    $this->db->select("amt.id, amt.name_of_arbitrator, amt.email, amt.contact_no, amt.whether_on_panel,
-                    pct.category_name as category, amt.category as category_code,
-                    amt.perm_address_1, amt.perm_address_2, amt.perm_country,
-                    amt.perm_state, amt.perm_pincode, amt.corr_address_1,
-                    amt.corr_address_2, amt.corr_country, amt.corr_state,
-                    amt.corr_pincode, DATE_FORMAT(amt.dob, '%d-%m-%Y') as dob,
-                    GROUP_CONCAT(CONCAT(cdt.case_no_prefix,'/', cdt.case_no, '/', cdt.case_no_year)
-                    ORDER BY CAST(SUBSTRING(cdt.case_no_year, -2) AS UNSIGNED) ASC, cdt.case_no ASC SEPARATOR ', ') as case_no_desc,
-                    GROUP_CONCAT(cdt.case_status ORDER BY CAST(SUBSTRING(cdt.case_no_year, -2) AS UNSIGNED) ASC, cdt.case_no ASC SEPARATOR ', ') as case_status");
-    $this->db->from('master_arbitrators_tbl as amt');
-    $this->db->join('panel_category_tbl as pct', 'pct.code = amt.category', 'left');
-    $this->db->join('cs_arbitral_tribunal_tbl as cat', 'cat.arbitrator_code = amt.code', 'left');
-    $this->db->join('cs_case_details_tbl as cdt', 'cdt.slug = cat.case_no', 'left');
-    $this->db->where('amt.record_status', 1);
-    $this->db->where('amt.approved', 1); 
+    
+      // Selecting required fields and aggregating case details group
+$this->db->select("amt.id, amt.name_of_arbitrator, amt.email, amt.contact_no, amt.whether_on_panel,
+pct.category_name as category, amt.category as category_code,
+amt.perm_address_1, amt.perm_address_2, amt.perm_country,
+amt.perm_state, amt.perm_pincode, amt.corr_address_1,
+amt.corr_address_2, amt.corr_country, amt.corr_state,
+amt.corr_pincode, DATE_FORMAT(amt.dob, '%d-%m-%Y') as dob,
+GROUP_CONCAT(CONCAT(cdt.case_no_prefix,'/', cdt.case_no, '/', cdt.case_no_year)
+ORDER BY CAST(SUBSTRING(cdt.case_no_year, -2) AS UNSIGNED) ASC, cdt.case_no ASC SEPARATOR ', ') as case_no_desc,
+GROUP_CONCAT(cdt.case_status ORDER BY CAST(SUBSTRING(cdt.case_no_year, -2) AS UNSIGNED) ASC, cdt.case_no ASC SEPARATOR ', ') as case_status,
+GROUP_CONCAT(IFNULL(DATE_FORMAT(cat.date_of_appointment, '%d-%m-%Y'), '-')
+ORDER BY CAST(SUBSTRING(cdt.case_no_year, -2) AS UNSIGNED) ASC, cdt.case_no ASC SEPARATOR ', ') as date_of_appointment");
+$this->db->from('master_arbitrators_tbl as amt');
+$this->db->join('panel_category_tbl as pct', 'pct.code = amt.category', 'left');
+$this->db->join('cs_arbitral_tribunal_tbl as cat', 'cat.arbitrator_code = amt.code', 'left');
+$this->db->join('cs_case_details_tbl as cdt', 'cdt.slug = cat.case_no', 'left');
+$this->db->where('amt.record_status', 1);
+$this->db->where('amt.approved', 1);
+
+
 
     // Filter by arbitrator name if provided
     if ($this->input->post('f_arbitrator_name')) {
